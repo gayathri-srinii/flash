@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+  <div class="text-center">
+    <h1>Welcome to FLASH 🔥</h1>
+    <p class="lead">Your mini social network to learn Django + DRF.</p>
+    {% if user.is_authenticated %}
+      <p>Go to your feed (coming soon!)</p>
+    {% else %}
+      <a href="{% url 'register' %}" class="btn btn-primary">Get Started</a>
+    {% endif %}
+  </div>
+{% endblock %}

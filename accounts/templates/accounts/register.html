@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+
+{% block title %}Register{% endblock %}
+
+{% block content %}
+
+<div class="row justify-content-center">
+  <div class="col-md-5">
+
+    <h2 class="mb-3 text-center">Create Account</h2>
+
+    <form method="POST">
+      {% csrf_token %}
+
+      <!-- Username -->
+      <div class="mb-3"><i class="bi bi-info-circle ms-1"
+             data-bs-toggle="tooltip"
+             title="Username must contain only letters, numbers, and underscores."></i>
+        <label class="form-label">
+          Username
+          
+        </label>
+        {{ form.username }}
+      </div>
+
+      <!-- Email -->
+      <div class="mb-3">
+        <i class="bi bi-info-circle ms-1"
+             data-bs-toggle="tooltip"
+             title="Enter a valid email address. This is required for password reset."></i>
+        <label class="form-label">
+          Email
+          
+        </label>
+        {{ form.email }}
+      </div>
+
+      <!-- Password1 -->
+      <div class="mb-3"><i class="bi bi-info-circle ms-1"
+             data-bs-toggle="tooltip"
+             title="Password must be at least 8 characters long and not entirely numeric."></i>
+        <label class="form-label">
+          Password
+          
+        </label>
+        {{ form.password1 }}
+      </div>
+
+      <!-- Password2 -->
+      <div class="mb-3"><i class="bi bi-info-circle ms-1"
+             data-bs-toggle="tooltip"
+             title="Enter the same password again for confirmation."></i>
+        <label class="form-label">
+          Confirm Password
+          
+        </label>
+        {{ form.password2 }}
+      </div>
+
+      <button class="btn btn-primary w-100" type="submit">Register</button>
+
+      <p class="mt-3 text-center">
+        Already have an account?
+        <a href="{% url 'login' %}">Login</a>
+      </p>
+
+    </form>
+
+  </div>
+</div>
+
+<!-- Bootstrap Icons CDN -->
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
+
+<!-- Enable Bootstrap Tooltips -->
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    tooltipTriggerList.map(function (tooltipTriggerEl) {
+      return new bootstrap.Tooltip(tooltipTriggerEl)
+    })
+  });
+</script>
+
+{% endblock %}
